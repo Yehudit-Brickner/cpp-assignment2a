@@ -33,9 +33,6 @@ TEST_CASE("bad write"){
     CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/4,  /*column*/1,  Direction::Horizontal,"DEFG"));  // cant write over somthing written
     CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/0,  /*column*/95,  Direction::Horizontal,"cpp is fun"));  //goes out of bounds in the end of the row  
     CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/5,  /*column*/0,  Direction::Horizontal,"this is not going to run because it has to many letters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"));  //goes out of bounds in the end of the row 
-    // CHECK_THROWS(notebook1.write(/*page*/-1,  /*row*/0,  /*column*/20,  Direction::Horizontal,"cpp is fun"));  // not allowed page number
-    // CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/-1,  /*column*/20,  Direction::Horizontal,"cpp is fun"));  // not allowed row number
-    // CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/1,  /*column*/-1,  Direction::Horizontal,"cpp is fun"));  // not allowed column number
 }
 
 
@@ -46,11 +43,7 @@ TEST_CASE("bad write"){
 TEST_CASE("bad read1"){
     
     CHECK_THROWS(notebook1.read(/*page*/0,  /*row*/0,  /*column*/90,  Direction::Horizontal,11)); // goes out of bounds in the end of the row
-    CHECK_THROWS(notebook1.read(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,101)); // goes out of bounds in the end of the row
-    // CHECK_THROWS(notebook1.read(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,4)); // not allowed page number
-    // CHECK_THROWS(notebook1.read(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,4)); // not allowed row number
-    // CHECK_THROWS(notebook1.read(/*page*/-0,  /*row*/0,  /*column*/-1,  Direction::Vertical,4)); // not allowed column number
-    
+    CHECK_THROWS(notebook1.read(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,101)); // goes out of bounds in the end of the row    
 }
 
 
@@ -74,11 +67,7 @@ TEST_CASE("bad erase"){
     
     CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/90,  Direction::Horizontal,11)); // goes out of bounds in the end of the row
     CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/100,  Direction::Vertical,11)); // goes out of bounds in the end of the row
-    CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,101)); // goes out of bounds in the end of the row
-    // CHECK_THROWS(notebook1.erase(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,4)); // not allowed page number
-    // CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,4)); // not allowed row number
-    // CHECK_THROWS(notebook1.erase(/*page*/-0,  /*row*/0,  /*column*/-1,  Direction::Vertical,4)); // not allowed column number
-    
+    CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,101)); // goes out of bounds in the end of the row    
 }
 
 
@@ -106,5 +95,27 @@ TEST_CASE("loop2"){
         txt2.at(2)=i;
         CHECK(notebook3.read(/*page*/0,  /*row*/i,  /*column*/0,  Direction::Horizontal,5)==txt2); 
     }
+    
+}
+
+TEST_CASE("speacial symbol"){
+    notebook2.write(/*page*/10,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \n world");
+    CHECK(notebook2.read(/*page*/10,  /*row*/10,  /*column*/10,  Direction::Horizontal,13)=="hello \n world");
+
+    notebook2.write(/*page*/20,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \r world");
+    CHECK(notebook2.read(/*page*/20,  /*row*/10,  /*column*/10,  Direction::Horizontal,13)=="hello \r world");
+
+    notebook2.write(/*page*/30,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \t world");
+    CHECK(notebook2.read(/*page*/30,  /*row*/10,  /*column*/10,  Direction::Horizontal,13)=="hello \t world");
+
+    notebook2.write(/*page*/11,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \n world");
+    CHECK(notebook2.read(/*page0*/11,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \n world");
+
+    notebook2.write(/*page*/21,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \r world");
+    CHECK(notebook2.read(/*page*/21,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \r world");
+
+    notebook2.write(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \t world");
+    CHECK(notebook2.read(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \t world");
+
     
 }
