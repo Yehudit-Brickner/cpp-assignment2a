@@ -71,6 +71,7 @@ TEST_CASE("good erase and read"){
 TEST_CASE("bad erase"){
     
     CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/90,  Direction::Horizontal,11)); // goes out of bounds in the end of the row
+    CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/100,  Direction::Vertical,11)); // goes out of bounds in the end of the row
     // CHECK_THROWS(notebook1.erase(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,4)); // not allowed page number
     // CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,4)); // not allowed row number
     // CHECK_THROWS(notebook1.erase(/*page*/-0,  /*row*/0,  /*column*/-1,  Direction::Vertical,4)); // not allowed column number
@@ -81,7 +82,7 @@ TEST_CASE("bad erase"){
 TEST_CASE("loop1"){
 
     for (unsigned int i=0; i<110;i++){
-        if(i<=89){
+        if(i<=88){
             notebook3.write(/*page*/i,  /*row*/i,  /*column*/i,  Direction::Horizontal,"hello world");
             CHECK(notebook1.read(/*page*/i,  /*row*/i,  /*column*/i,  Direction::Horizontal,11)=="hello world"); 
         }
