@@ -53,7 +53,7 @@ using namespace std;
             //cout<< "trying to change the columns" << endl;
             unsigned int j=0; 
             for(unsigned int i=row; i<row+txt.size();i++){
-                _pageMap[page]._rowMap[row]._row[column]=txt[j]; 
+                _pageMap[page]._rowMap[i]._row[column]=txt[j]; 
                 // char *cptr =&_pageMap[page]._rowMap[i]._row[column];
                 // *cptr=txt[j];
                 j++; 

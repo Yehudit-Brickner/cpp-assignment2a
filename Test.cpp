@@ -32,6 +32,7 @@ TEST_CASE("bad write"){
     CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/0,  /*column*/10,  Direction::Horizontal,"cpp is fun"));  // cant write over somthing written
     CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/4,  /*column*/1,  Direction::Horizontal,"DEFG"));  // cant write over somthing written
     CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/0,  /*column*/95,  Direction::Horizontal,"cpp is fun"));  //goes out of bounds in the end of the row  
+    CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/5,  /*column*/0,  Direction::Horizontal,"this is not going to run because it has to many letters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"));  //goes out of bounds in the end of the row 
     // CHECK_THROWS(notebook1.write(/*page*/-1,  /*row*/0,  /*column*/20,  Direction::Horizontal,"cpp is fun"));  // not allowed page number
     // CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/-1,  /*column*/20,  Direction::Horizontal,"cpp is fun"));  // not allowed row number
     // CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/1,  /*column*/-1,  Direction::Horizontal,"cpp is fun"));  // not allowed column number
@@ -45,6 +46,7 @@ TEST_CASE("bad write"){
 TEST_CASE("bad read1"){
     
     CHECK_THROWS(notebook1.read(/*page*/0,  /*row*/0,  /*column*/90,  Direction::Horizontal,11)); // goes out of bounds in the end of the row
+    CHECK_THROWS(notebook1.read(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,101)); // goes out of bounds in the end of the row
     // CHECK_THROWS(notebook1.read(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,4)); // not allowed page number
     // CHECK_THROWS(notebook1.read(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,4)); // not allowed row number
     // CHECK_THROWS(notebook1.read(/*page*/-0,  /*row*/0,  /*column*/-1,  Direction::Vertical,4)); // not allowed column number
@@ -72,6 +74,7 @@ TEST_CASE("bad erase"){
     
     CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/90,  Direction::Horizontal,11)); // goes out of bounds in the end of the row
     CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/100,  Direction::Vertical,11)); // goes out of bounds in the end of the row
+    CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,101)); // goes out of bounds in the end of the row
     // CHECK_THROWS(notebook1.erase(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,4)); // not allowed page number
     // CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,4)); // not allowed row number
     // CHECK_THROWS(notebook1.erase(/*page*/-0,  /*row*/0,  /*column*/-1,  Direction::Vertical,4)); // not allowed column number
