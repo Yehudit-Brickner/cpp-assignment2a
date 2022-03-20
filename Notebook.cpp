@@ -1,4 +1,3 @@
-#pragma once
 
 
 #include "Direction.hpp"
@@ -14,22 +13,24 @@ using namespace std;
 
 
 
-void write(int page, int row, int column, Direction d, string txt){
-    cout << "this function should write" << endl;
-}
 
 
-string read(int page, int row, int column, Direction d, int length){
-    cout << "this function should read" << endl;
-    return "somthing";
-}
+    void ariel::Notebook:: write( unsigned int page,unsigned int row, unsigned int column, Direction d, string txt){
+        cout << "this function should write" << endl;
+    }
 
-void erase(int page, int row, int column, Direction d, int length){
-    cout << "this function should erase" << endl;
-}
 
-void show(int page){
-    cout << "this function should show" << endl;
-}
+    string ariel::Notebook::read(unsigned int page,unsigned int row,unsigned int column, Direction d,unsigned int length){
+        cout << "this function should read" << endl;
+        return "somthing";
+    }
+
+    void ariel::Notebook::erase(unsigned int page, unsigned int row, unsigned int column, Direction d,unsigned int length){
+        cout << "this function should erase" << endl;
+    }
+
+    void ariel::Notebook::show(unsigned int page){
+        cout << "this function should show" << endl;
+    }
 
 

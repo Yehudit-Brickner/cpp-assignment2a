@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include <stdexcept>
 #include <string>
@@ -19,10 +19,10 @@ namespace ariel{
         
         private:
 
-            // std::map<int, Page> _pageMap;
+            std::map<int, Page> _pageMap;
 
         public:
-            std::map<int, Page> _pageMap;
+           
 
 
             void write(unsigned int page, unsigned int row,unsigned int column, Direction d, string txt);
@@ -43,7 +43,6 @@ namespace ariel{
 
             
             Notebook(){
-                _pageMap;
                 addPage(0);
             }
     };

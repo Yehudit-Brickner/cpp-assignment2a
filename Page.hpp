@@ -18,15 +18,14 @@ class Page{
 
     public:     
 
-        void Page:: addRow(int num){
+        void addRow(int num){
             if(_rowMap.find(num)==_rowMap.end()){ // check if the row exsits
                 Row r;
                 _rowMap.insert( pair<int, Row>(num, r)); // if not create new row 
             }
         }
 
-        Page::Page(){
-            _rowMap;
+        Page(){
             addRow(0);
         }
         

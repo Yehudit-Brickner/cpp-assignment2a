@@ -80,7 +80,7 @@ TEST_CASE("bad erase"){
 
 TEST_CASE("loop1"){
 
-    for (int i=0; i<110;i++){
+    for (unsigned int i=0; i<110;i++){
         if(i<=89){
             notebook3.write(/*page*/i,  /*row*/i,  /*column*/i,  Direction::Horizontal,"hello world");
             CHECK(notebook1.read(/*page*/i,  /*row*/i,  /*column*/i,  Direction::Horizontal,11)=="hello world"); 
@@ -94,7 +94,7 @@ TEST_CASE("loop1"){
 TEST_CASE("loop2"){
 
     
-    for (int i=32; i<127;i++){
+    for (unsigned int i=32; i<127;i++){
         std::string txt1;
         txt1.push_back(i);
         notebook3.write(/*page*/0,  /*row*/i,  /*column*/2, Direction::Horizontal,txt1);
