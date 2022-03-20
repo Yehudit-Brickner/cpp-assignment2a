@@ -11,10 +11,12 @@ using namespace std;
 
 class Row{
    
-    private:
-        std::vector<char> _row;
+    
+        
 
-    public:    
+    public: 
+
+    std::vector<char> _row;   
         // constructer
         Row(){
             _row.reserve(100);
