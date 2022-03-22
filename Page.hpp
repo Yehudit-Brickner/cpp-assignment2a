@@ -14,14 +14,14 @@ class Page{
 
       
     public: 
-        std::map<unsigned int, Row> _rowMap;
+        std::map< int, Row> _rowMap;
 
         
 
-        void addRow(unsigned int num){
+        void addRow( int num){
             if(_rowMap.find(num)==_rowMap.end()){ // check if the row exsits
                 Row r;
-                _rowMap.insert( pair<unsigned int, Row>(num, r)); // if not create new row 
+                _rowMap.insert( pair< int, Row>(num, r)); // if not create new row 
             }
         }
 

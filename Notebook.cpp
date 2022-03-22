@@ -17,17 +17,17 @@ using namespace std;
 
 
 
-    void ariel::Notebook::write( unsigned int page,unsigned int row, unsigned int column, Direction d, string txt){
+    void ariel::Notebook::write(  int page, int row,  int column, Direction d, string txt){
         cout << "this function shold write somthing" << endl;
     }
-    string ariel::Notebook::read(unsigned int page, unsigned int row, unsigned int column, Direction d, unsigned int length){
+    string ariel::Notebook::read( int page,  int row,  int column, Direction d,  int length){
         cout << "this function shold read somthing" << endl;
         return "somthing";
     }
-    void ariel::Notebook::erase(unsigned int page, unsigned int row, unsigned int column, Direction d, unsigned int length){
+    void ariel::Notebook::erase( int page,  int row,  int column, Direction d,  int length){
         cout << "this function shold erase somthing" << endl;
     }
-    void ariel::Notebook::show(unsigned int page){
+    void ariel::Notebook::show( int page){
         cout << "this function shold show somthing" << endl;
     }
 
