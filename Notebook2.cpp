@@ -1,8 +1,8 @@
 
 
 
-    // void ariel::Notebook::write( unsigned int page,unsigned int row, unsigned int column, Direction d, string txt){
-    // const unsigned int max=100; 
+    // void ariel::Notebook::write(  int page, int row,  int column, Direction d, string txt){
+    // const  int max=100; 
     //   //  cout << "this function should write" << endl;
     //   
     //     if(d==Direction::Horizontal){
@@ -20,15 +20,15 @@
     //         }
     //     }
     //     std::string reading=ariel::Notebook::read(page,row,column,d,txt.size());
-    //     for(unsigned int i=0;i<txt.size();i++){
+    //     for( int i=0;i<txt.size();i++){
     //         if(reading[i]!='_'){
     //              throw std::invalid_argument( "the text is trying to over write other text or marked out text" );
     //         }
     //     }
     //     if (d==Direction::Horizontal){
-    //         unsigned int j=0;
+    //          int j=0;
     //         //cout<< "trying to change the row" << endl; 
-    //         for(unsigned int i=column; i<column+txt.size();i++){
+    //         for( int i=column; i<column+txt.size();i++){
     //             _pageMap[page]._rowMap[row]._row[i]=txt[j];
     //             // char *cptr =&_pageMap[page]._rowMap[row]._row[i];
     //             // *cptr=txt[j];   
@@ -38,8 +38,8 @@
     //     }
     //     else{
     //         //cout<< "trying to change the columns" << endl;
-    //         unsigned int j=0; 
-    //         for(unsigned int i=row; i<row+txt.size();i++){
+    //          int j=0; 
+    //         for( int i=row; i<row+txt.size();i++){
     //             _pageMap[page]._rowMap[i]._row[column]=txt[j]; 
     //             // char *cptr =&_pageMap[page]._rowMap[i]._row[column];
     //             // *cptr=txt[j];
@@ -49,8 +49,8 @@
     //     }
     // }
 
-    // string ariel::Notebook::read(unsigned int page,unsigned int row,unsigned int column, Direction d,unsigned int length){
-    //     const unsigned int max=100; 
+    // string ariel::Notebook::read( int page, int row, int column, Direction d, int length){
+    //     const int max=100; 
     //     //cout << "this function should read" << endl;
     //     //cout << "page num " << page << "row num " << row << "column num  "<< column << "  length  " << length<< endl; 
     //     if(d==Direction::Horizontal){
@@ -72,7 +72,7 @@
     //     // cout<< "check page" << endl;
     //     if(_pageMap.find(page)==_pageMap.end()){ 
     //         Page p;
-    //         _pageMap.insert( pair<unsigned int, Page>(page, p)); 
+    //         _pageMap.insert( pair< int, Page>(page, p)); 
     //     }
     //     // cout<< "finish check page" << endl;        
     //   
@@ -83,16 +83,16 @@
     //         // cout<< "check row" << endl;
     //         if(_pageMap[page]._rowMap.find(row)==_pageMap[page]._rowMap.end()){
     //             Row r;
-    //             _pageMap[page]._rowMap.insert(pair<unsigned int,Row>(row,r));
+    //             _pageMap[page]._rowMap.insert(pair< int,Row>(row,r));
     //           //  cout<< "finish check row" << endl;
-    //             for( unsigned int i=column; i<column+length;i++){
+    //             for(  int i=column; i<column+length;i++){
     //                 ans.push_back(_pageMap[page]._rowMap[row]._row[i]);
     //                 //cout<< ans<< endl;
     //             }
     //             //cout<< ans<< "  finish"<<endl;
     //         }
     //         else{
-    //             for( unsigned int i=column; i<column+length;i++){
+    //             for(  int i=column; i<column+length;i++){
     //                 ans.push_back(_pageMap[page]._rowMap[row]._row[i]);
     //             } 
     //             //cout<< ans<< "  finish" <<endl;
@@ -100,11 +100,11 @@
     //         return ans;
     //     }
     //     // cout<< "vertical1" << endl;
-    //     for (unsigned int i=row; i<row+length;i++){
+    //     for ( int i=row; i<row+length;i++){
     //           //cout << "row num is  "<< i<<  "  column is  "<<column<< endl;
     //         if(_pageMap[page]._rowMap.find(i)==_pageMap[page]._rowMap.end()){
     //             Row r;
-    //             _pageMap[page]._rowMap.insert(pair<unsigned int,Row>(i,r));
+    //             _pageMap[page]._rowMap.insert(pair< int,Row>(i,r));
     //             ans.push_back(_pageMap[page]._rowMap[i]._row[column]);
     //             //char c= _pageMap[page]._rowMap[i]._row[column];
     //             //cout <<"added row then char  "<< c<< endl;
@@ -121,8 +121,8 @@
     //
     // }
 
-    // void ariel::Notebook::erase(unsigned int page, unsigned int row, unsigned int column, Direction d,unsigned int length){
-    //       const unsigned int max=100; 
+    // void ariel::Notebook::erase( int page,  int row,  int column, Direction d, int length){
+    //       const  int max=100; 
     //   //  cout << "this function should erase" << endl;
     //     if(d==Direction::Horizontal){
     //         // cout<< "horizantal1" << endl;
@@ -140,9 +140,9 @@
     //     }
     //   
     //     if (d==Direction::Horizontal){
-    //         //unsigned int j=0;
+    //         // int j=0;
     //        // cout<< "trying to change the row" << endl; 
-    //         for(unsigned int i=column; i<column+length;i++){
+    //         for( int i=column; i<column+length;i++){
     //             _pageMap[page]._rowMap[row]._row[i]='~';
     //             // char *cptr =&_pageMap[page]._rowMap[row]._row[i];
     //             // *cptr='~';   
@@ -152,8 +152,8 @@
     //     }
     //     else{
     //         //cout<< "trying to change the columns" << endl;
-    //         //unsigned int j=0; 
-    //         for(unsigned int i=row; i<row+length;i++){
+    //         // int j=0; 
+    //         for( int i=row; i<row+length;i++){
     //             _pageMap[page]._rowMap[i]._row[column]='~'; 
     //             // char *cptr =&_pageMap[page]._rowMap[i]._row[column];
     //             // *cptr='~';
@@ -164,7 +164,7 @@
     //
     // }
 
-    // void ariel::Notebook::show(unsigned int page){
+    // void ariel::Notebook::show( int page){
     //     cout << "this function should show" << endl;
     // }
 
