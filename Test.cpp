@@ -6,13 +6,16 @@
 #include "doctest.h"
 #include "Notebook.hpp"
 #include <string>
+#include <vector>
+#include <ctime>
+#include <random>
 using ariel::Direction;
 
 
 ariel::Notebook notebook1;
 ariel::Notebook notebook2;
 ariel::Notebook notebook3;
-
+ariel::Notebook notebook4;
 
 
 TEST_CASE("good write and read"){
@@ -116,6 +119,5 @@ TEST_CASE("speacial symbol"){
 
     notebook2.write(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \t world");
     CHECK(notebook2.read(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \t world");
-
-    
+  
 }
