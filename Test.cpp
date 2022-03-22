@@ -76,7 +76,7 @@ TEST_CASE("bad erase"){
 
 TEST_CASE("loop1"){
 
-    for (unsigned int i=0; i<110;i++){
+    for (int i=0; i<110;i++){
         if(i<=88){
             notebook3.write(/*page*/i,  /*row*/i,  /*column*/i,  Direction::Horizontal,"hello world");
             CHECK(notebook3.read(/*page*/i,  /*row*/i,  /*column*/i,  Direction::Horizontal,11)=="hello world"); 
@@ -90,7 +90,7 @@ TEST_CASE("loop1"){
 TEST_CASE("loop2"){
 
     
-    for (unsigned int i=32; i<127;i++){
+    for ( int i=32; i<127;i++){
         std::string txt1;
         txt1.push_back(i);
         notebook3.write(/*page*/0,  /*row*/i,  /*column*/2, Direction::Horizontal,txt1);
@@ -120,4 +120,32 @@ TEST_CASE("speacial symbol"){
     notebook2.write(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \t world");
     CHECK(notebook2.read(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \t world");
   
+}
+
+
+TEST_CASE("negative number"){
+    CHECK_THROWS(notebook4.write(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Horizontal,"hello world")); // negative page
+    CHECK_THROWS(notebook4.write(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Horizontal,"hello world")); // negative row
+    CHECK_THROWS(notebook4.write(/*page*/-1,  /*row*/0,  /*column*/-1,  Direction::Horizontal,"hello world")); // negative column
+    CHECK_THROWS(notebook4.read(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Horizontal,5)); // negative page 
+    CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Horizontal,5)); // negative row
+    CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/0,  /*column*/-1,  Direction::Horizontal,5)); // negative column
+    CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,-1)); // negative length
+    CHECK_THROWS(notebook4.erase(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Horizontal,5)); // negative page
+    CHECK_THROWS(notebook4.erase(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Horizontal,5)); // negative row
+    CHECK_THROWS(notebook4.erase(/*page*/0,  /*row*/0,  /*column*/-1,  Direction::Horizontal,5)); // negative column
+    CHECK_THROWS(notebook4.erase(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,-1)); // negative length
+
+    CHECK_THROWS(notebook4.write(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,"hello world")); // negative page
+    CHECK_THROWS(notebook4.write(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,"hello world")); // negative row
+    CHECK_THROWS(notebook4.write(/*page*/-1,  /*row*/0,  /*column*/-1,  Direction::Vertical,"hello world")); // negative column
+    CHECK_THROWS(notebook4.read(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,5)); // negative page 
+    CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,5)); // negative row
+    CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/0,  /*column*/-1,  Direction::Vertical,5)); // negative column
+    CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Vertical,-1)); // negative length
+    CHECK_THROWS(notebook4.erase(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Vertical,5)); // negative page
+    CHECK_THROWS(notebook4.erase(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,5)); // negative row
+    CHECK_THROWS(notebook4.erase(/*page*/0,  /*row*/0,  /*column*/-1,  Direction::Vertical,5)); // negative column
+    CHECK_THROWS(notebook4.erase(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Vertical,-1)); // negative length
+
 }

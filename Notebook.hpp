@@ -17,7 +17,7 @@ namespace ariel{
    
         private:
 
-            std::map<unsigned int, Page> _pageMap;
+            std::map< int, Page> _pageMap;
 
         public:
            
@@ -32,7 +32,7 @@ namespace ariel{
             void addPage(  int num){
                 if(_pageMap.find(num)==_pageMap.end()){ // check if the page exsits
                     Page p;
-                    _pageMap.insert( pair<unsigned int, Page>(num, p)); // if not create new page
+                    _pageMap.insert( pair<int, Page>(num, p)); // if not create new page
                 }
             }
 
