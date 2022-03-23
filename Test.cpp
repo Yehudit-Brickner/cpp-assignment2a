@@ -160,10 +160,29 @@ TEST_CASE("speacial symbol"){
  
 }
 
-TEST_CASE("using _"){
+TEST_CASE("cross word using _"){
     ariel::Notebook notebook5;
-    
 
-
+    notebook4.write(/*page*/0,  /*row*/4,  /*column*/3,  Direction::Vertical,"ki_te");
+    notebook4.write(/*page*/0,  /*row*/7,  /*column*/1,  Direction::Vertical,"cub");
+    notebook4.write(/*page*/0,  /*row*/6,  /*column*/3,  Direction::Horizontal,"tad_ole");
+    notebook4.write(/*page*/0,  /*row*/4,  /*column*/6,  Direction::Vertical,"pup");
+    notebook4.write(/*page*/0,  /*row*/9,  /*column*/2,  Direction::Horizontal,"unny");
+    notebook4.write(/*page*/0,  /*row*/1,  /*column*/10,  Direction::Vertical,"joey");
+    notebook4.write(/*page*/0,  /*row*/4,  /*column*/7,  Direction::Horizontal,"o_e");
+    notebook4.write(/*page*/0,  /*row*/1,  /*column*/8,  Direction::Vertical,"fawn");
+    notebook4.write(/*page*/0,  /*row*/1,  /*column*/5,  Direction::Horizontal,"cal");
+   
+    CHECK(notebook4.read(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,12)== "____________");
+    CHECK(notebook4.read(/*page*/0,  /*row*/1,  /*column*/0,  Direction::Horizontal,12)== "_____calf_j_");
+    CHECK(notebook4.read(/*page*/0,  /*row*/2,  /*column*/0,  Direction::Horizontal,12)== "________a_o_");
+    CHECK(notebook4.read(/*page*/0,  /*row*/3,  /*column*/0,  Direction::Horizontal,12)== "________w_e_");
+    CHECK(notebook4.read(/*page*/0,  /*row*/4,  /*column*/0,  Direction::Horizontal,12)== "___k__poney_");
+    CHECK(notebook4.read(/*page*/0,  /*row*/5,  /*column*/0,  Direction::Horizontal,12)== "___i__u_____");
+    CHECK(notebook4.read(/*page*/0,  /*row*/6,  /*column*/0,  Direction::Horizontal,12)== "___tadpole__");
+    CHECK(notebook4.read(/*page*/0,  /*row*/7,  /*column*/0,  Direction::Horizontal,12)== "_c_t________");
+    CHECK(notebook4.read(/*page*/0,  /*row*/8,  /*column*/0,  Direction::Horizontal,12)== "_u_e________");
+    CHECK(notebook4.read(/*page*/0,  /*row*/9,  /*column*/0,  Direction::Horizontal,12)== "_bunny______");
+    CHECK(notebook4.read(/*page*/0,  /*row*/10,  /*column*/0,  Direction::Horizontal,12)=="____________");
 
 }
