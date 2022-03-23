@@ -130,24 +130,12 @@ TEST_CASE("loop2"){
 }
 
 TEST_CASE("speacial symbol"){
-    notebook2.write(/*page*/10,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \n world");
-    CHECK(notebook2.read(/*page*/10,  /*row*/10,  /*column*/10,  Direction::Horizontal,13)=="hello \n world");
-
-    notebook2.write(/*page*/20,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \r world");
-    CHECK(notebook2.read(/*page*/20,  /*row*/10,  /*column*/10,  Direction::Horizontal,13)=="hello \r world");
-
-    notebook2.write(/*page*/30,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \t world");
-    CHECK(notebook2.read(/*page*/30,  /*row*/10,  /*column*/10,  Direction::Horizontal,13)=="hello \t world");
-
-    notebook2.write(/*page*/11,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \n world");
-    CHECK(notebook2.read(/*page0*/11,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \n world");
-
-    notebook2.write(/*page*/21,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \r world");
-    CHECK(notebook2.read(/*page*/21,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \r world");
-
-    notebook2.write(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \t world");
-    CHECK(notebook2.read(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,13)=="hello \t world");
-
+    CHECK_THROWS(notebook2.write(/*page*/10,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \n world")); // you cant write a '/n'
+    CHECK_THROWS(notebook2.write(/*page*/20,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \r world")); // you cant write a '/r'
+    CHECK_THROWS(notebook2.write(/*page*/30,  /*row*/10,  /*column*/10,  Direction::Horizontal,"hello \t world")); // you cant write a '/t'
+    CHECK_THROWS(notebook2.write(/*page*/11,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \n world")); // you cant write a '/n'
+    CHECK_THROWS(notebook2.write(/*page*/21,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \r world")); // you cant write a '/r'
+    CHECK_THROWS(notebook2.write(/*page*/31,  /*row*/10,  /*column*/10,  Direction::Vertical,"hello \t world")); // you cant write a '/t'
     CHECK_THROWS(notebook3.write(/*page*/40,  /*row*/1,  /*column*/1,  Direction::Horizontal,"~~~")); // you cant write a '~'
     CHECK_THROWS(notebook3.write(/*page*/40,  /*row*/1,  /*column*/1,  Direction::Vertical,"~~~")); // you cant write a '~'
     CHECK_THROWS(notebook3.write(/*page*/40,  /*row*/1,  /*column*/1,  Direction::Vertical,"a~c")); // you cant write a '~'
