@@ -41,7 +41,6 @@ TEST_CASE("bad write"){
     CHECK_THROWS(notebook1.write(/*page*/0,  /*row*/5,  /*column*/0,  Direction::Horizontal,"this is not going to run because it has to many letters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"));  //goes out of bounds in the end of the row 
 }
 
-
 TEST_CASE("negative number write"){
     CHECK_THROWS(notebook4.write(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Horizontal,"hello world")); // negative page
     CHECK_THROWS(notebook4.write(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Horizontal,"hello world")); // negative row
@@ -51,7 +50,6 @@ TEST_CASE("negative number write"){
     CHECK_THROWS(notebook4.write(/*page*/0,  /*row*/-1,  /*column*/0,  Direction::Vertical,"hello world")); // negative row
     CHECK_THROWS(notebook4.write(/*page*/-1,  /*row*/0,  /*column*/-1,  Direction::Vertical,"hello world")); // negative column
 }
-
 
 TEST_CASE("bad read"){
     
@@ -70,7 +68,6 @@ TEST_CASE("negative number read"){
     CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/0,  /*column*/-1,  Direction::Vertical,5)); // negative column
     CHECK_THROWS(notebook4.read(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Vertical,-1)); // negative length 
 }
-
 
 TEST_CASE("good erase and read"){
     notebook1.erase(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,11);
@@ -92,8 +89,6 @@ TEST_CASE("bad erase"){
     CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/100,  Direction::Vertical,11)); // goes out of bounds in the end of the row
     CHECK_THROWS(notebook1.erase(/*page*/0,  /*row*/0,  /*column*/0,  Direction::Horizontal,101)); // goes out of bounds in the end of the row    
 }
-
-
 
 TEST_CASE("negative number erase"){
     CHECK_THROWS(notebook4.erase(/*page*/-1,  /*row*/0,  /*column*/0,  Direction::Horizontal,5)); // negative page
