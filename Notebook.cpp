@@ -36,12 +36,12 @@ using namespace std;
 
 
     // void ariel::Notebook::write(  int page, int row,  int column, Direction d, string txt){
-    // const  int max=100; 
+    // int max=100; 
     //   //  cout << "this function should write" << endl;
-    //   
+      
     //     if(d==Direction::Horizontal){
     //         // cout<< "horizantal1" << endl;
-    //         if (column+txt.size()>=max){
+    //         if (column+txt.length()>=max){
     //             //cout << "threw exception" << endl;
     //             throw std::invalid_argument( "the text goes out of bound of the row" );
     //         }
@@ -84,7 +84,7 @@ using namespace std;
     // }
 
     // string ariel::Notebook::read( int page, int row, int column, Direction d, int length){
-    //     const  int max=100; 
+    //     int max=100; 
     //     //cout << "this function should read" << endl;
     //     //cout << "page num " << page << "row num " << row << "column num  "<< column << "  length  " << length<< endl; 
     //     if(d==Direction::Horizontal){
@@ -101,7 +101,7 @@ using namespace std;
     //           throw std::invalid_argument( "the text goes out of bound of the row" );  
     //         }
     //     }
-    //
+    
     //     // check if page exsists, if not add the page
     //     // cout<< "check page" << endl;
     //     if(_pageMap.find(page)==_pageMap.end()){ 
@@ -109,9 +109,9 @@ using namespace std;
     //         _pageMap.insert( pair< int, Page>(page, p)); 
     //     }
     //     // cout<< "finish check page" << endl;        
-    //   
+      
     //     std::string ans;
-    //
+    
     //     if (d==Direction::Horizontal){
     //         // cout<< "horizantal2" << endl;
     //         // cout<< "check row" << endl;
@@ -152,11 +152,11 @@ using namespace std;
     //     //cout << ans <<" finish"<< endl;
     //     return ans;
     //     // return "somthing";
-    //
+    
     // }
 
     // void ariel::Notebook::erase( int page,  int row,  int column, Direction d, int length){
-    //       const  int max=100; 
+    //     int max=100; 
     //   //  cout << "this function should erase" << endl;
     //     if(d==Direction::Horizontal){
     //         // cout<< "horizantal1" << endl;
@@ -172,7 +172,7 @@ using namespace std;
     //             throw std::invalid_argument( "the text goes out of bound of the row" );  
     //         }
     //     }
-    //   
+      
     //     if (d==Direction::Horizontal){
     //         // int j=0;
     //        // cout<< "trying to change the row" << endl; 
@@ -195,7 +195,7 @@ using namespace std;
     //         } 
     //         //cout<<"hopefully changed the columns" << endl;  
     //     }
-    //
+    
     // }
 
     // void ariel::Notebook::show( int page){
